@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import ContactForm from "./components/ContactForm";
+import ModalToast from "./components/ModalToast";
+import Footer from "./ui/Footer";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [showToast, setShowToast] = useState(false);
+  const [error, setError] = useState({ query: false, consentAuth: false });
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const data = new FormData(e.target);
+    const formValues = Object.fromEntries(data);
+
+    if (!formValues.query || !formValues.consentAuth) {
+      if (!formValues.query && !formValues.consentAuth)
+        return setError({ ...error, query: true, consentAuth: true });
+      !formValues.query && setError({ ...error, query: true });
+      !formValues.consentAuth && setError({ ...error, consentAuth: true });
+      return;
+    }
+
+    setShowToast(true);
+    setTimeout(() => {
+      setShowToast(false);
+      e.target.reset();
+    }, 4000);
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <main className="min-h-screen bg-(--primary-light) py-5 flex flex-col items-center justify-around">
+        <article
+          className="bg-(--white) p-5 max-w-[20rem]
+        md:max-w-[30rem]
+        lg:min-w-[40rem]
+        mx-auto flex flex-col gap-3 rounded-xl"
+        >
+          <h1 className="text-(--grey-darker) font-bold text-2xl">
+            Contact Us
+          </h1>
+          <ContactForm
+            handleSubmit={handleSubmit}
+            error={error}
+            onError={setError}
+          />
+        </article>
+        <Footer />
+      </main>
+      {showToast && <ModalToast />}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
