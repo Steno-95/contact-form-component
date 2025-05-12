@@ -6,7 +6,6 @@ function ContactConsent({ error, onError }) {
           type="checkbox"
           id="consent"
           name="consentAuth"
-          aria-autocomplete="false"
           className="accent-(--primary-green) cursor-pointer peer"
           onChange={() => onError({ ...error, consentAuth: false })}
         />

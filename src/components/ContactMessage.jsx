@@ -10,7 +10,6 @@ function ContactMessage({ children, errorMessage, id }) {
         id={id}
         name={id}
         aria-invalid="false"
-        aria-autocomplete="false"
         aria-errormessage={`error ${id}`}
         onBlur={(e) => handleValidation(e.target)}
         className="h-[12rem]"
