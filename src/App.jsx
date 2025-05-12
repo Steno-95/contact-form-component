@@ -24,7 +24,7 @@ function App() {
     setTimeout(() => {
       setShowToast(false);
       e.target.reset();
-    }, 4000);
+    }, 2000);
   }
 
   return (
