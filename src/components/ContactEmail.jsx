@@ -7,9 +7,12 @@ function ContactEmail({ children, id }) {
     if (!el.value) {
       el.ariaInvalid = true;
       setMessage("This field is required");
-    } else {
+    } else if (!el.value.includes("@")) {
       el.ariaInvalid = true;
       setMessage("Please enter a valid email address");
+    } else {
+      el.ariaInvalid = false;
+      setMessage("");
     }
   }
 
@@ -27,11 +30,9 @@ function ContactEmail({ children, id }) {
         aria-errormessage={`error ${id}`}
         onBlur={(e) => handleValidation(e.target)}
       />
-      {message && (
-        <span className="err-msg" id={`error ${id}`}>
-          {message}
-        </span>
-      )}
+      <span className={`err-msg ${message ? "show" : ""}`} id={`error ${id}`}>
+        {message}
+      </span>
     </div>
   );
 }
