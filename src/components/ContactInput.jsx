@@ -3,7 +3,7 @@ function ContactInput({ children, errorMessage, id }) {
     el.ariaInvalid = !el.value;
   }
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full">
       <label htmlFor={id}>{children}</label>
       <input
         type="text"
