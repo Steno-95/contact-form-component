@@ -36,10 +36,7 @@ function App() {
         lg:min-w-[40rem]
         mx-auto flex flex-col gap-3 rounded-xl"
         >
-          <h1
-            className="text-(--grey-darker) font-bold text-2xl"
-            aria-label="contact us form"
-          >
+          <h1 className="text-(--grey-darker) font-bold text-2xl">
             Contact Us
           </h1>
           <ContactForm

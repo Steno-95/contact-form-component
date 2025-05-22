@@ -1,6 +1,6 @@
 function ContactConsent({ error, onError }) {
   return (
-    <fieldset>
+    <article>
       <div className="flex items-center gap-4 ">
         <input
           type="checkbox"
@@ -25,7 +25,7 @@ function ContactConsent({ error, onError }) {
       >
         To submit this form, please consent to being contacted
       </span>
-    </fieldset>
+    </article>
   );
 }
 

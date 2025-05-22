@@ -27,12 +27,12 @@ function ContactEmail({ children, id }) {
         aria-invalid="false"
         autoComplete="email"
         aria-live="polite"
-        aria-describedby={`error ${id}`}
+        aria-describedby={`error-${id}`}
         aria-autocomplete="inline"
-        aria-errormessage={`error ${id}`}
+        aria-errormessage={`error-${id}`}
         onBlur={(e) => handleValidation(e.target)}
       />
-      <span className={`err-msg ${message ? "show" : ""}`} id={`error ${id}`}>
+      <span className={`err-msg ${message ? "show" : ""}`} id={`error-${id}`}>
         {message}
       </span>
     </div>
