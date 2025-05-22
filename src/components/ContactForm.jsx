@@ -10,6 +10,7 @@ function ContactForm({ handleSubmit, error, onError }) {
     <form
       className="text-(--grey-darker) flex flex-col"
       onSubmit={handleSubmit}
+      aria-live="polite"
     >
       <fieldset className="flex flex-col md:flex-row md:gap-3">
         <ContactInput errorMessage={"This field is required"} id={"first-name"}>
@@ -25,7 +26,10 @@ function ContactForm({ handleSubmit, error, onError }) {
           Query Type <span className="text-(--primary-green)">*</span>
         </legend>
         <ContactQuery onError={onError} error={error} />
-        <span className={`err-msg ${error.query ? "show" : ""}`}>
+        <span
+          className={`err-msg ${error.query ? "show" : ""}`}
+          id="error-query"
+        >
           Please select a query type
         </span>
       </fieldset>

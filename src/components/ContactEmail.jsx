@@ -26,6 +26,8 @@ function ContactEmail({ children, id }) {
         name={id}
         aria-invalid="false"
         autoComplete="email"
+        aria-live="polite"
+        aria-describedby={`error ${id}`}
         aria-autocomplete="inline"
         aria-errormessage={`error ${id}`}
         onBlur={(e) => handleValidation(e.target)}

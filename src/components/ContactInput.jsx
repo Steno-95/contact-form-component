@@ -12,11 +12,13 @@ function ContactInput({ children, errorMessage, id }) {
         name={id}
         aria-invalid="false"
         autoComplete="name"
+        aria-live="polite"
         aria-autocomplete="both"
+        aria-describedby={`error ${id}`}
         aria-errormessage={`error ${id}`}
         onBlur={(e) => handleValidation(e.target)}
       />
-      <span className="err-msg" id={`error ${id}`}>
+      <span className="err-msg" id={`error ${id}`} aria-label={errorMessage}>
         {errorMessage}
       </span>
     </div>
