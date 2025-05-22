@@ -35,7 +35,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [GitHub](https://github.com/Steno-95)
+- Solution URL: [GitHub](https://github.com/Steno-95/contact-form-component)
 - Live Site URL: [Netlify](https://contact-form-component-f-m.netlify.app)
 
 ## My process
