@@ -1,6 +1,6 @@
-function ModalToast() {
+function ModalToast({ ref }) {
   return (
-    <article className="toast" aria-live="assertive">
+    <article className="toast" ref={ref} tabIndex={-1}>
       <div className="flex items-center gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -16,7 +16,7 @@ function ModalToast() {
         <h2>Message Sent!</h2>
       </div>
       <p className="text-[.8rem] text-(--primary-light) w-fit">
-        Thanks for completing the form. We'll be in touch soon!
+        Thanks for completing the form. We will be in touch soon!
       </p>
     </article>
   );

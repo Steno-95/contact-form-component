@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ContactForm from "./components/ContactForm";
 import ModalToast from "./components/ModalToast";
 import Footer from "./ui/Footer";
@@ -24,8 +24,19 @@ function App() {
     setTimeout(() => {
       setShowToast(false);
       e.target.reset();
-    }, 2000);
+    }, 5000);
   }
+
+  //Attempt at making the modal toast readable from screen reader
+
+  const toastRef = useRef();
+  useEffect(() => {
+    console.log(toastRef);
+
+    if (showToast && toastRef.current) {
+      toastRef.current.focus();
+    }
+  }, [showToast]);
 
   return (
     <>
@@ -47,7 +58,9 @@ function App() {
         </article>
         <Footer />
       </main>
-      {showToast && <ModalToast />}
+      <div aria-live="assertive">
+        {showToast && <ModalToast ref={toastRef} />}
+      </div>
     </>
   );
 }
